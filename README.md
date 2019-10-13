@@ -1,3 +1,3 @@
 # firebase-bulk-loader
 
-A Firebase tool to load data to Firestore.
+A simple tool to load data to Firestore.

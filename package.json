@@ -1,7 +1,7 @@
 {
   "name": "firebase-bulk-loader",
   "version": "1.0.0",
-  "description": "A Firebase tool to load data to Firestore.",
+  "description": "A simple tool to load data to Firestore.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

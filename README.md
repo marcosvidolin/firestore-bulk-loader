@@ -1,2 +1,3 @@
-# firebase-load-data
-A easy way to load/import data to Firebase
+# firebase-bulk-loader
+
+A Firebase tool to load data to Firestore.

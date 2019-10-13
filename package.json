@@ -1,0 +1,29 @@
+{
+  "name": "firebase-bulk-loader",
+  "version": "1.0.0",
+  "description": "A Firebase tool to load data to Firestore.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marcosvidolin/firebase-bulk-loader.git"
+  },
+  "keywords": [
+    "firebase",
+    "firestore",
+    "bulkloader",
+    "bulk",
+    "data",
+    "google",
+    "tool",
+    "load"
+  ],
+  "author": "Marcos A. Vidolin de Lima <marcosvidolin@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/marcosvidolin/firebase-bulk-loader/issues"
+  },
+  "homepage": "https://github.com/marcosvidolin/firebase-bulk-loader#readme"
+}

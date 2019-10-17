@@ -6,7 +6,8 @@ A simple tool to load data to Cloud Firestore.
 
 ## How to Use
 
-Basic usage:
+**Basic usage:**
+***WARN: The document will be updated if an existing ID is used.***
 ```javascript
 const serviceAccount = require('./private/credentials/service-account.json');
 
@@ -19,7 +20,7 @@ const data = [
 bulkLoader.load(data, "my-collection", serviceAccount);
 ```
 
-To use specify a custom id:
+**To specify a custom id:**
 ```javascript
 const serviceAccount = require('./private/credentials/service-account.json');
 

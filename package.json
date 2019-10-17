@@ -1,5 +1,5 @@
 {
-  "name": "firebase-bulk-loader",
+  "name": "firestore-bulk-loader",
   "version": "1.0.0",
   "description": "A simple tool to load data to Cloud Firestore.",
   "main": "index.js",
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/marcosvidolin/firebase-bulk-loader.git"
+    "url": "git+https://github.com/marcosvidolin/firestore-bulk-loader.git"
   },
   "keywords": [
     "firebase",
@@ -23,10 +23,10 @@
   "author": "Marcos A. Vidolin de Lima <marcosvidolin@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/marcosvidolin/firebase-bulk-loader/issues"
+    "url": "https://github.com/marcosvidolin/firestore-bulk-loader/issues"
   },
-  "homepage": "https://github.com/marcosvidolin/firebase-bulk-loader#readme",
+  "homepage": "https://github.com/marcosvidolin/firestore-bulk-loader#readme",
   "dependencies": {
-    "firebase-admin": "^8.6.0"
+    "firebase-admin": "^8.6.1"
   }
 }

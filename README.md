@@ -15,6 +15,7 @@ const data = [
     { myId: "b3", name:"Bruna", age:33 }
 ]
 
+// the name of the attribute to use as ID.
 var options = {
     documentKeyProperty: "myId"
 }

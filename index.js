@@ -55,7 +55,7 @@ const loadDataWithId = (data, collectionKey, documentKeyProperty) => {
         let document = data[docKey];
         let id = document[documentKeyProperty];
         firestore.collection(collectionKey).doc(id).set(document).then((ref) => {
-            console.log('Added document with ID: ', id);
+            // console.log('Added document with ID: ', id);
         });
     });
 };
@@ -69,7 +69,7 @@ const loadDataWithId = (data, collectionKey, documentKeyProperty) => {
 const loadDataWithoutId = (documents, collectionKey) => {
     Object.keys(documents).forEach(doc => {
         firestore.collection(collectionKey).add(documents[doc]).then(ref => {
-            console.log('Added document with ID: ', ref.id);
+            // console.log('Added document with ID: ', ref.id);
         });
     });
 };

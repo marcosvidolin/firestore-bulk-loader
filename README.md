@@ -4,17 +4,24 @@
 
 A simple tool to load data to Cloud Firestore.
 
+## How to install
+
+```shell
+npm i firestore-bulk-loader
+```
+
 ## How to Use
 
 **Basic usage:**
 
 ```javascript
-const serviceAccount = require('./private/credentials/service-account.json');
+const bulkLoader = require('firestore-bulk-loader');
+const serviceAccount = require('./path/to/service-account.json');
 
 const data = [
-    { myId: "j1", name:"John", age:30 },
-    { myId: "m2", name:"Mario", age:25 },
-    { myId: "b3", name:"Bruna", age:33 }
+    { name:"John", age:30 },
+    { name:"Mario", age:25 },
+    { name:"Bruna", age:33 }
 ];
 
 bulkLoader.load(data, "my-collection", serviceAccount);
@@ -25,7 +32,8 @@ bulkLoader.load(data, "my-collection", serviceAccount);
 ***WARN: The document will be updated if an existing ID is used.***
 
 ```javascript
-const serviceAccount = require('./private/credentials/service-account.json');
+const bulkLoader = require('firestore-bulk-loader');
+const serviceAccount = require('./path/to/service-account.json');
 
 const data = [
     { myId: "j1", name:"John", age:30 },

@@ -1,6 +1,6 @@
 {
   "name": "firestore-bulk-loader",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A simple tool to load data to Cloud Firestore.",
   "main": "index.js",
   "scripts": {

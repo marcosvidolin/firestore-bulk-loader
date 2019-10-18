@@ -40,5 +40,13 @@ var options = {
 
 bulkLoader.load(data, "my-collection", serviceAccount, options);
 ```
+
+## Considerations
+
+- If you load a collection that dons't exists in the Firestore it will be created;
+- If the collections already exist in the Firestore all the data will be added to the existent collection;
+- A Document will only be replaced if the given 'id' alread exists in the collection. This case only happens when used ** documentKeyProperty ** option;
+
 ## Contributors
+
 [![](https://sourcerer.io/fame/marcosvidolin/marcosvidolin/firestore-bulk-loader/images/0)](https://sourcerer.io/fame/marcosvidolin/marcosvidolin/firestore-bulk-loader/links/0)[![](https://sourcerer.io/fame/marcosvidolin/marcosvidolin/firestore-bulk-loader/images/1)](https://sourcerer.io/fame/marcosvidolin/marcosvidolin/firestore-bulk-loader/links/1)[![](https://sourcerer.io/fame/marcosvidolin/marcosvidolin/firestore-bulk-loader/images/2)](https://sourcerer.io/fame/marcosvidolin/marcosvidolin/firestore-bulk-loader/links/2)[![](https://sourcerer.io/fame/marcosvidolin/marcosvidolin/firestore-bulk-loader/images/3)](https://sourcerer.io/fame/marcosvidolin/marcosvidolin/firestore-bulk-loader/links/3)[![](https://sourcerer.io/fame/marcosvidolin/marcosvidolin/firestore-bulk-loader/images/4)](https://sourcerer.io/fame/marcosvidolin/marcosvidolin/firestore-bulk-loader/links/4)[![](https://sourcerer.io/fame/marcosvidolin/marcosvidolin/firestore-bulk-loader/images/5)](https://sourcerer.io/fame/marcosvidolin/marcosvidolin/firestore-bulk-loader/links/5)[![](https://sourcerer.io/fame/marcosvidolin/marcosvidolin/firestore-bulk-loader/images/6)](https://sourcerer.io/fame/marcosvidolin/marcosvidolin/firestore-bulk-loader/links/6)[![](https://sourcerer.io/fame/marcosvidolin/marcosvidolin/firestore-bulk-loader/images/7)](https://sourcerer.io/fame/marcosvidolin/marcosvidolin/firestore-bulk-loader/links/7)

@@ -7,8 +7,6 @@
 
 const admin = require('firebase-admin');
 
-let firestore = undefined;
-
 /**
  * Configures the Firestore object.
  * 
@@ -20,7 +18,7 @@ const configureFirestore = (serviceAccount) => {
         credential: admin.credential.cert(serviceAccount)
     });
 
-    firestore = admin.firestore();
+    let firestore = admin.firestore();
     firestore.settings({
         timestampsInSnapshots: true
     });
@@ -47,10 +45,11 @@ const checkData = (data) => {
  * Loads the data with a specific ID.
  * 
  * @param {*} data 
- * @param {*} collectionKey 
+ * @param {*} collectionKey
+ * @param {*} firestore
  * @param {*} documentKeyProperty 
  */
-const loadDataWithId = (data, collectionKey, documentKeyProperty) => {
+const loadDataWithId = (data, collectionKey, firestore, documentKeyProperty) => {
     Object.keys(data).forEach(docKey => {
         let document = data[docKey];
         let id = document[documentKeyProperty];
@@ -65,8 +64,9 @@ const loadDataWithId = (data, collectionKey, documentKeyProperty) => {
  * 
  * @param {*} documents 
  * @param {*} collectionKey 
+ * @param {*} firestore
  */
-const loadDataWithoutId = (documents, collectionKey) => {
+const loadDataWithoutId = (documents, collectionKey, firestore) => {
     Object.keys(documents).forEach(doc => {
         firestore.collection(collectionKey).add(documents[doc]).then(ref => {
             // console.log('Added document with ID: ', ref.id);
@@ -89,12 +89,12 @@ const loadData = function (data, collectionKey, serviceAccount, options) {
     let opts = options || {};
     const docKeyProperty = opts.documentKeyProperty;
 
-    configureFirestore(serviceAccount);
+    let firestore = configureFirestore(serviceAccount);
 
     if (docKeyProperty) {
-        loadDataWithId(data, collectionKey, docKeyProperty);
+        loadDataWithId(data, collectionKey, firestore, docKeyProperty);
     } else {
-        loadDataWithoutId(data, collectionKey);
+        loadDataWithoutId(data, collectionKey, firestore);
     }
 };
 

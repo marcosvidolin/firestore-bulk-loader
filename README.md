@@ -17,6 +17,16 @@ npm i firestore-bulk-loader
 ```javascript
 const bulkLoader = require('firestore-bulk-loader');
 const serviceAccount = require('./path/to/service-account.json');
+const data = require('path/to/data.json');
+
+bulkLoader.load(data, "my-collection", serviceAccount);
+```
+
+or
+
+```javascript
+const bulkLoader = require('firestore-bulk-loader');
+const serviceAccount = require('./path/to/service-account.json');
 
 const data = [
     { name:"John", age:30 },

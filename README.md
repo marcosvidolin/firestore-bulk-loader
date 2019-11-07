@@ -63,7 +63,7 @@ bulkLoader.load(data, "my-collection", serviceAccount, options);
 
 - If you load a collection that dons't exists in the Firestore it will be created;
 - If the collections already exist in the Firestore all the data will be added to the existent collection;
-- A Document will only be replaced if the given 'id' alread exists in the collection. This case only happens when used ** documentKeyProperty ** option;
+- A Document will only be replaced if the given 'id' alread exists in the collection. This case only happens when used **documentKeyProperty** option;
 
 ## Contributors
 

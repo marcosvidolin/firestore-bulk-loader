@@ -6,6 +6,7 @@
 "use strict";
 
 const admin = require('firebase-admin');
+const csv = require('csvtojson');
 
 /**
  * Configures the Firestore object.
@@ -39,6 +40,15 @@ const checkData = (data) => {
     if (!Array.isArray(data)) {
         throw new Error("Invalid data. You must inform an array.");
     }
+};
+
+/**
+ * Converts CSV data into JSON.
+ * 
+ * @param {*} data 
+ */
+const convertCsvToJson = (data) => {
+    return await csv().fromString(data);
 };
 
 /**
@@ -88,13 +98,19 @@ const loadData = function (data, collectionKey, serviceAccount, options) {
 
     let opts = options || {};
     const docKeyProperty = opts.documentKeyProperty;
+    const isCsv = opts.csv;
+
+    let documents = data;
+    if (isCsv) {
+        documents = convertCsvToJson(data);
+    }
 
     let firestore = configureFirestore(serviceAccount);
 
     if (docKeyProperty) {
-        loadDataWithId(data, collectionKey, firestore, docKeyProperty);
+        loadDataWithId(documents, collectionKey, firestore, docKeyProperty);
     } else {
-        loadDataWithoutId(data, collectionKey, firestore);
+        loadDataWithoutId(documents, collectionKey, firestore);
     }
 };
 

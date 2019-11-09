@@ -59,6 +59,28 @@ var options = {
 bulkLoader.load(data, "my-collection", serviceAccount, options);
 ```
 
+**CSV files:**
+
+```javascript
+const bulkLoader = require('firestore-bulk-loader');
+const serviceAccount = require('./path/to/service-account.json');
+
+const data = require('./path/to/data.csv');
+
+var options = {
+    csv: true
+}
+
+bulkLoader.load(data, "my-collection", serviceAccount, options);
+```
+
+## Options
+
+| Parameter           | Description                            | Default  | Required |
+|---------------------|----------------------------------------|----------|----------|
+| documentKeyProperty | The name of the attribute to use as ID |          | No       |
+| csv                 | specifies that the data type is CSV    | false    | No       |
+
 ## Considerations
 
 - If you load a collection that dons't exists in the Firestore it will be created;

@@ -6,6 +6,7 @@
 "use strict";
 
 const admin = require('firebase-admin');
+const csv = require('csvtojson');
 
 /**
  * Configures the Firestore object.
@@ -33,12 +34,18 @@ const configureFirestore = (serviceAccount) => {
  * @returns documents
  */
 const checkData = (data) => {
-    if (!data) {
-        throw new Error("No data to load.");
-    }
     if (!Array.isArray(data)) {
         throw new Error("Invalid data. You must inform an array.");
     }
+};
+
+/**
+ * Converts CSV data into JSON.
+ * 
+ * @param {*} data 
+ */
+const convertCsvToJson = async (data) => {
+    return await csv().fromString(data);
 };
 
 /**
@@ -82,19 +89,29 @@ const loadDataWithoutId = (documents, collectionKey, firestore) => {
  * @param {*} serviceAccount 
  * @param {*} options 
  */
-const loadData = function (data, collectionKey, serviceAccount, options) {
+const loadData = async (data, collectionKey, serviceAccount, options) => {
 
-    checkData(data);
+    if (!data) {
+        throw new Error("No data to load.");
+    }
 
     let opts = options || {};
     const docKeyProperty = opts.documentKeyProperty;
+    const isCsv = opts.csv;
+
+    let documents = data;
+    if (isCsv) {
+        documents = await convertCsvToJson(data);
+    }
+
+    checkData(documents);
 
     let firestore = configureFirestore(serviceAccount);
 
     if (docKeyProperty) {
-        loadDataWithId(data, collectionKey, firestore, docKeyProperty);
+        loadDataWithId(documents, collectionKey, firestore, docKeyProperty);
     } else {
-        loadDataWithoutId(data, collectionKey, firestore);
+        loadDataWithoutId(documents, collectionKey, firestore);
     }
 };
 

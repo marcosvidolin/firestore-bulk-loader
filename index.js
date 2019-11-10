@@ -47,7 +47,7 @@ const checkData = (data) => {
  * 
  * @param {*} data 
  */
-const convertCsvToJson = (data) => {
+const convertCsvToJson = async (data) => {
     return await csv().fromString(data);
 };
 

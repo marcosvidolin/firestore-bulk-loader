@@ -34,9 +34,6 @@ const configureFirestore = (serviceAccount) => {
  * @returns documents
  */
 const checkData = (data) => {
-    if (!data) {
-        throw new Error("No data to load.");
-    }
     if (!Array.isArray(data)) {
         throw new Error("Invalid data. You must inform an array.");
     }
@@ -48,7 +45,7 @@ const checkData = (data) => {
  * @param {*} data 
  */
 const convertCsvToJson = async (data) => {
-    return await csv({'noheader': true}).fromString(data);
+    return await csv().fromString(data);
 };
 
 /**
@@ -92,9 +89,11 @@ const loadDataWithoutId = (documents, collectionKey, firestore) => {
  * @param {*} serviceAccount 
  * @param {*} options 
  */
-const loadData = function (data, collectionKey, serviceAccount, options) {
+const loadData = async (data, collectionKey, serviceAccount, options) => {
 
-    checkData(data);
+    if (!data) {
+        throw new Error("No data to load.");
+    }
 
     let opts = options || {};
     const docKeyProperty = opts.documentKeyProperty;
@@ -102,8 +101,10 @@ const loadData = function (data, collectionKey, serviceAccount, options) {
 
     let documents = data;
     if (isCsv) {
-        documents = convertCsvToJson(data);
+        documents = await convertCsvToJson(data);
     }
+
+    checkData(documents);
 
     let firestore = configureFirestore(serviceAccount);
 

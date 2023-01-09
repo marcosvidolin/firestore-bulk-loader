@@ -28,6 +28,6 @@
   "homepage": "https://github.com/marcosvidolin/firestore-bulk-loader#readme",
   "dependencies": {
     "csvtojson": "^2.0.10",
-    "firebase-admin": "^8.6.1"
+    "firebase-admin": "^11.4.1"
   }
 }
